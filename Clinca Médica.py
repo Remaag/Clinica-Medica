@@ -20,15 +20,17 @@ class Funcionario:
 
 
 class Medico(Funcionario):
-    def __init__(self, crm):
+    def __init__(self, nome, especialidade, crm):
+        super().__init__(nome, especialidade)
         self.crm = crm
 
-    def prescrever_medicamento(self, paciente, medicmaneto):
-        print(f'{self.nome} (CRM: {self.crm}) prescreceu {medicmaneto} para o paciente {paciente}.')
+    def prescrever_medicamento(self, paciente, medicamento):
+        print(f'{self.nome} (CRM: {self.crm}) prescreceu {medicamento} para o paciente {paciente}.')
 
 
-class Enfermeiro(Funcionario) :
-    def __init__(self, coren) :
+class Enfermeiro(Funcionario):
+    def __init__(self, nome, especialidade, coren):
+        super().__init__(nome, especialidade)
         self.coren = coren
 
     def aplciar_injecao(self, paciente) :
@@ -36,13 +38,19 @@ class Enfermeiro(Funcionario) :
 
 
 # Área de testes
-medico = Funcionario(nome= 'Dr. João', especialidade= 'Cardiolistas')
-medico.agendar_consulta(paciente= 'Maria', data= '10/10/2024')
-medico.realizar_exame(tipo_exame= 'Eletrograma', paciente= 'Carlos') 
+medico1 = Medico(nome= 'Dr. João', especialidade= 'Cardiolistas', crm= '123456')
+enfermeiro1 = Enfermeiro(nome= 'Enf. Josete', especialidade= 'Exame', coren= '098765')
 
-print(medico)
-print(medico.agendar_consulta)
-print(medico.realizar_exame)
+medico1.agendar_consulta(paciente= 'Maria', data= '10/10/2024')
+medico1.realizar_exame(tipo_exame= 'Eletrograma', paciente= 'Carlos') 
+medico1.prescrever_medicamento(medicamento= 'Dipirona', paciente= 'Helena')
+
+enfermeiro1.agendar_consulta(paciente= 'Maria', data= '10/10/2024')
+enfermeiro1.realizar_exame(tipo_exame= 'Eletrograma', paciente= 'Carlos') 
+enfermeiro1.aplciar_injecao(paciente= 'Jay')
+
+
+
    
 # while True:
 #     print (f''' {20 * '-'}
